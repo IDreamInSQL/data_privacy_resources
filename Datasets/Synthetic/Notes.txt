@@ -1,0 +1,124 @@
+Generated with mostly.ai
+
+JSON configuration:
+{
+   "name": "Fake Fake Data - No Context FK, Language for Add",
+   "description": null,
+   "tables": [
+      {
+         "name": "DIM_PERSON",
+         "sourceConnectorId": "7f1ad068-c5ab-40d9-8f40-b91177fc4b57",
+         "location": "mostly-production-mostly-s3-bucket-mostly-app/connectors/7f1ad068-c5ab-40d9-8f40-b91177fc4b57/DIM_PERSON/DIM_PERSON_COORDINATES.csv",
+         "data": null,
+         "modelConfiguration": {
+            "model": "MOSTLY_AI/Medium",
+            "maxSampleSize": 100745,
+            "batchSize": null,
+            "maxTrainingTime": 10,
+            "maxEpochs": 100,
+            "maxSequenceWindow": 100,
+            "enableFlexibleGeneration": false,
+            "valueProtection": false,
+            "rareCategoryReplacementMethod": "CONSTANT",
+            "compute": "c5f0d5da-04d9-4099-8394-e1048a469a5a"
+         },
+         "languageModelConfiguration": {
+            "model": "microsoft/phi-1_5",
+            "maxSampleSize": 100745,
+            "batchSize": null,
+            "maxTrainingTime": 20,
+            "maxEpochs": 100,
+            "maxSequenceWindow": 100,
+            "enableFlexibleGeneration": true,
+            "valueProtection": true,
+            "rareCategoryReplacementMethod": "CONSTANT",
+            "compute": "d2dc8ce3-2861-4bea-95c2-99c01a2ed084"
+         },
+         "primaryKey": "DIM_PERSON_KEY",
+         "foreignKeys": null,
+         "columns": [
+            {
+               "name": "DIM_PERSON_KEY",
+               "modelEncodingType": "TABULAR_NUMERIC_AUTO"
+            },
+            {
+               "name": "FIRST_NAME",
+               "modelEncodingType": "TABULAR_CHARACTER"
+            },
+            {
+               "name": "LAST_NAME",
+               "modelEncodingType": "TABULAR_CHARACTER"
+            },
+            {
+               "name": "APPROX_AGE",
+               "modelEncodingType": "TABULAR_NUMERIC_DISCRETE"
+            },
+            {
+               "name": "ADDRESS",
+               "modelEncodingType": "LANGUAGE_TEXT"
+            },
+            {
+               "name": "CITY",
+               "modelEncodingType": "TABULAR_CATEGORICAL"
+            },
+            {
+               "name": "STATE",
+               "modelEncodingType": "TABULAR_CATEGORICAL"
+            },
+            {
+               "name": "ZIP",
+               "modelEncodingType": "TABULAR_CATEGORICAL"
+            },
+            {
+               "name": "COORDINATES",
+               "modelEncodingType": "TABULAR_LAT_LONG"
+            }
+         ]
+      },
+      {
+         "name": "FACT_SALARY",
+         "sourceConnectorId": "8740c3b9-1ce0-478b-a597-de7f40fdaaea",
+         "location": "mostly-production-mostly-s3-bucket-mostly-app/connectors/8740c3b9-1ce0-478b-a597-de7f40fdaaea/FACT_SALARY/FACT_SALARY.csv",
+         "data": null,
+         "modelConfiguration": {
+            "model": "MOSTLY_AI/Medium",
+            "maxSampleSize": 100686,
+            "batchSize": null,
+            "maxTrainingTime": 10,
+            "maxEpochs": 100,
+            "maxSequenceWindow": 100,
+            "enableFlexibleGeneration": false,
+            "valueProtection": false,
+            "rareCategoryReplacementMethod": "CONSTANT",
+            "compute": "c5f0d5da-04d9-4099-8394-e1048a469a5a"
+         },
+         "languageModelConfiguration": null,
+         "primaryKey": "FACT_SALARY_KEY",
+         "foreignKeys": [
+            {
+               "column": "DIM_PERSON_KEY",
+               "referencedTable": "DIM_PERSON",
+               "isContext": false
+            }
+         ],
+         "columns": [
+            {
+               "name": "FACT_SALARY_KEY",
+               "modelEncodingType": "TABULAR_NUMERIC_AUTO"
+            },
+            {
+               "name": "DIM_OCCUPATION_KEY",
+               "modelEncodingType": "TABULAR_CATEGORICAL"
+            },
+            {
+               "name": "DIM_PERSON_KEY",
+               "modelEncodingType": "TABULAR_NUMERIC_AUTO"
+            },
+            {
+               "name": "FINAL_SALARY",
+               "modelEncodingType": "TABULAR_NUMERIC_BINNED"
+            }
+         ]
+      }
+   ]
+}

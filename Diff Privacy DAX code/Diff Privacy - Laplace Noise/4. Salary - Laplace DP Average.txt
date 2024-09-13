@@ -1,0 +1,10 @@
+Laplace DP Average = 
+VAR epsilon = 0.5 -- Privacy parameter, 0.5 is considered a medium level of privacy
+VAR sensitivity = (MAX(FACT_SALARY[FINAL_SALARY]) - MIN(FACT_SALARY[FINAL_SALARY])) / [Person Count]
+VAR scale = sensitivity / epsilon
+
+-- Calculate Laplace noise
+VAR LaplaceNoise = -scale * SIGN([Secondary Hash]) * LOG(1 - 2 * ABS([Secondary Hash]))
+
+-- Apply the noise
+RETURN [Average Salary (Actual)] + LaplaceNoise

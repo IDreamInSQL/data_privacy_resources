@@ -1,0 +1,4 @@
+Names, ages, and genders retrieved from subjects of English-language Wikipedia articles.
+Addresses based on actual locations of beauty salons and barber shops in the USA.
+Occupations categories and salary data retrieved from the Bureau of Labor Statistics.
+Adjustments to salaries made based on geography (US Census Table S1901), age, and gender.

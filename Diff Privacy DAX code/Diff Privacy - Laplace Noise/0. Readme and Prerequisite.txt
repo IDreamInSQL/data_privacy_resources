@@ -1,0 +1,9 @@
+Important: This method is not completely secure differential privacy, as it has the following limitations:
+1) It does not implement privacy budgets
+2) It doesn't take user filter criteria into account, so someone could still figure out when additional people are added to a dataset.
+   The first measure has an added random component to thwart this SOMEWHAT, but a determined attacker can still get around it.
+3) It doesn't implement a privacy domain. For example, if there are no 20-year-olds in a result set AND you are grouping by age, then no column for 20-year-olds will show.
+
+First, create a colum in your input data in the 0-1 range as a FLOAT that is either:
+1) Ideally, a hash of the primary key of your data subject (person) table
+2) A random number, but in your data subject table

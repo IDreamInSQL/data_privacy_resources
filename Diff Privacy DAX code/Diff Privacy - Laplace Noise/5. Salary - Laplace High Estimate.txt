@@ -1,0 +1,9 @@
+Laplace High Estimate = 
+VAR epsilon = 0.5
+VAR sensitivity = (MAX(FACT_SALARY[FINAL_SALARY]) - MIN(FACT_SALARY[FINAL_SALARY])) / [Person Count]
+VAR scale = sensitivity / epsilon
+
+-- For a 95% CI, you use a z-score of 1.96
+VAR ci_range = 1.96 * SQRT(2) * scale
+
+RETURN [Laplace DP Average] + ci_range

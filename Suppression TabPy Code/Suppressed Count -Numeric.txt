@@ -1,0 +1,25 @@
+SCRIPT_REAL("
+def suppress_counts_list(in_list, threshold):
+    suppressed_total = 0
+    needs_suppression = False
+    out_list = []
+    for x in in_list:
+        if x is None or x < threshold:
+            needs_suppression = True
+            suppressed_total += (x or 0)
+            out_list.append(0)
+        else:
+            out_list.append(x)
+
+    # Next lowest value
+    if needs_suppression and suppressed_total < threshold:
+        min_value = min([z for z in out_list if z > 0])
+        out_list = [a if a != min_value else 0 for a in out_list]
+
+    return out_list
+print([_arg1])
+
+return suppress_counts_list(_arg1, 10)
+
+", 
+COUNTD([The Thing to Count]))

@@ -1,0 +1,1 @@
+Adjustment Factor = MOD(DIM_PERSON[Sum Hash], 1) - 0.5
